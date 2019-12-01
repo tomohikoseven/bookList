@@ -6,7 +6,7 @@ import { Book } from './book';
 })
 export class BookService {
 
-  book: Book;
+  book: Book = new Book(0, '');
   constructor() { 
     this.book.id = 0;
     this.book.title = '';

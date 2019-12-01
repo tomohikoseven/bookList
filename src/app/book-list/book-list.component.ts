@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { Book } from '../book';
 import { BookListService } from '../book-list.service';
+import { BookService } from '../book.service';
 
 @Component({
   selector: 'app-book-list',
@@ -12,7 +15,9 @@ export class BookListComponent implements OnInit {
   show = true;
   bookList : Book[];
   constructor(
-    private bookListService: BookListService
+    private bookListService: BookListService,
+    private bookService: BookService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -20,7 +25,8 @@ export class BookListComponent implements OnInit {
   }
 
   onClick( book: Book ){
-    console.log( book.id );
+    this.bookService.book = new Book( book.id, book.title );
+    this.router.navigate(['update']);
   }
 
 }
