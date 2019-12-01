@@ -1,0 +1,9 @@
+<ng-template #listContent>
+    <p>No Book List.</p>
+</ng-template>
+<div *ngIf="bookList.length > 0; else listContent">
+    <ul>
+        <li *ngFor="let book of bookList" (click)="onClick(book)">{{book.title}}</li>
+    </ul>
+</div>
+<p>book-list works!</p>
